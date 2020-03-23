@@ -31,6 +31,10 @@
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Name)
                 .IsUnique();
+            
+            modelBuilder.Entity<User>()
+                .Property(u => u.Name)
+                .IsRequired();
 
             modelBuilder.Entity<Wallet>()
                 .HasKey(w => w.Id);
@@ -66,7 +70,10 @@
             modelBuilder.Entity<Currency>()
                 .HasIndex(c => c.Name)
                 .IsUnique();
-
+                
+            modelBuilder.Entity<Currency>()
+                .Property(c => c.Name)
+                .IsRequired();
 
             modelBuilder.Entity<WalletCurrency>()
                 .HasKey(wc => new { wc.WalletId, wc.CurrencyId });
